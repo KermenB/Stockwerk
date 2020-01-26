@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StockWerk</title>
+    <meta charset="utf-8">
+    <%= csrf_meta_tags %>
+    <link href="/src/css/styles.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/src/img/favicon.ico" type="image/x-icon">
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+      <%= yield %>
+  </body>
+</html>

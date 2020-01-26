@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stockwerk Admin Area</title>
+    <%= csrf_meta_tags %>
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link href="/src/css/styles.css" rel="stylesheet">
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="wrap">
+      <% if session[:current_user] %>
+        <li class="log">
+          <div class="item"><%= link_to 'LOGOUT', session_path('logout'), method: :delete %>
+          </div>
+        </li>
+      <% end %>
+      </div>
+    </header>
+    <div>
+      <%= yield %>
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<div class="wrap">
+    <div class="title">EDITING PROJECT</div>
+    <div class="btnBack">
+        <span><%= link_to 'Show', @project %></span>
+        <span><%= link_to 'Back', projects_path %></span>
+    </div>
+
+    <%= render 'form', project: @project %>
+
+</div>

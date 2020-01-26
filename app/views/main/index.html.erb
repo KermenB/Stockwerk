@@ -1,0 +1,193 @@
+<header>
+	<div class="wrap">
+		<div class="sidebar">
+			<div class="logotype">
+				<img src="/src/img/logo.png">
+			</div>
+			<nav>
+				<div class="item"><a href="#projekty">PROJEKTY</a></div>
+				<div class="item"><a href="#o nas">O NÁS</a></div>
+				<div class="item"><a href="#spolupracujeme">SPOLUPRACUJEME</a></div>
+				<div class="item"><a href="#kontakty">KONTAKTY</a></div>
+			</nav>
+		</div>
+	</div>
+</header>
+
+<main class="">
+	<div class="wrap">
+		<div class="title" id="projekty">PROJEKTY</div>
+		<div class="projects">
+			<% @projects.each do |project| %>
+				<div class="project">
+					<!-- link that opens popup -->
+					<a class="popup-with-form" href="#open-project-<%= project.id %>">
+						<div class="discription">
+							<div class="textWrap">
+								<div class="text"><%= ActionController::Base.helpers.sanitize(project.title, :tags => ['br']) %></div>
+							</div>
+						</div>
+						<img src="<%= project.img_path %>" alt="<%= project.title %>" />
+					</a>	
+
+					<!-- popup itself -->
+					<section id="open-project-<%= project.id %>" class="white-popup-block mfp-hide" class="bg">
+						<div class="wrapper">
+							<div class="headline"><%= ActionController::Base.helpers.sanitize(project.title, :tags => []) %></div>
+							<table>
+								<tr>
+									<td>Místo:</td><td><%= project.place %></td>
+								</tr>
+								<tr>
+									<td>Stupeň:</td><td><%= project.realization %></td>
+								</tr>
+								<tr>
+									<td>Investor:</td><td><%= project.investor %></td>
+								</tr>
+								<tr>
+									<td>Team:</td><td><%= project.author %></td>
+								</tr>
+							</table>
+							<p>
+								<%= ActionController::Base.helpers.sanitize(project.description, :tags => ['br', 'p']) %>
+							</p>
+							<% project.images.each do |img| %>
+							<div class="galerie">
+								<div class="security"></div>
+								<img class="img-in-popup" pre-src="<%= img.path %>" />
+							</div>
+							<% end %>
+						</div>
+					</section>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</main>
+<section>
+	<div class="wrap">
+		<!-- o nas -->
+		<div class="title" id="o nas">O NÁS</div>
+		<img class="we" src="/src/img/team/team.jpg">
+		<p>Autorský kolektiv StockWerk vznikl ze společné myšlenky přátel, které spojily podobné názory na architekturu. Chtěli jsme být dílnou „werkem“, 
+			která pečuje o historické stavby a prostředí a to se nám podařilo. Věnujeme se různorodým projektům, ve kterých využíváme pestrý potenciál nejen členů našeho týmu, 
+			ale i zkušených specialistů, se kterými dlouhodobě spolupracujeme. Soustředíme se na jednoduchost a čistý detail. Našimi klienty jsou soukromé osoby, obce, 
+			státní instituce a neziskový sektor. Zajímáme se o dění kolem a podporujeme dobré nápady.
+		</p>
+		<div class="mainMembers">
+			<div class="member">
+				<img src="/src/img/team/Adela.jpg">
+				<div class="name">Ing. arch. Adéla Poubová<br>ČKA 04 485</div>
+				<div class="data">
+					<div>Fakulta architektury</div>
+					<div>ČVUT v Praze</div>
+				</div>
+				<div class="block">
+					<span class="language">CZ</span>
+					<span class="language">RUS</span>
+					<span class="language">DEU</span>
+				</div>					
+			</div>
+			<div class="member">
+				<img src="/src/img/team/BaraC.jpg">
+				<div class="name">Bc. Barbora Cahová</div>
+				<div class="data">
+					<div>Fakulta architektury</div>
+					<div>ČVUT v Praze</div>
+				</div>
+				<div class="block">
+					<span class="language">CZ</span>
+					<span class="language">ENG</span>
+				</div>					
+			</div>
+		</div> 
+		<div class="mainMembers">
+			<div class="member">
+				<img src="/src/img/team/BaraS.jpg">
+				<div class="name">Ing. Barbora Studená</div>
+				<div class="data">
+					<div>Fakulta stavební</div>
+					<div>ČVUT v Praze</div>
+				</div>
+				<div class="block">
+					<span class="language">CZ</span>
+					<span class="language">ENG</span>
+				</div>					
+			</div>
+			<div class="member">
+				<img src="/src/img/team/Lucie.jpg">
+				<div class="name">Ing. Lucie Jamáriková</div>
+				<div class="data">
+					<div style="opacity:0">Ne ma facultu</div>
+					<div>Vysoká škola obchodní v Praze</div>
+				</div>
+				<div class="block">
+					<span class="language">CZ</span>
+					<span class="language">ENG</span>
+				</div>						
+			</div>
+		</div> 
+		<!--
+		<div class="members">
+			<div class="member">
+			...upto 3
+			</div>
+			
+		</div>
+		-->
+		<!-- spolupracujeme -->
+		<div class="title" id="spolupracujeme">SPOLUPRACUJEME</div>
+		<p class="indent">Baví nás dobré a užitečné projekty a proto je podporujeme.</p>
+		<p class="indent">Připravili jsme bezplatně projektovou dokumentaci k obnově barokní křížové cesty od Matyáše Bernarda Brauna ve Valči. 
+			Ve spolupráci s obcí se podařilo získat prostředky na realizaci a tak nezůstal jen projekt v šuplíku, ale akce byla 
+			v roce 2016 zrealizována.</p>
+		<p class="indent">Nejen projektově podporujeme dění kolem 
+		<a href="http://www.skoky.eu/" style="text-decoration: underline;">poutního místa ve Skocích</a>.</p> 
+		<p class="indent">Jsme rádi, že jsme měli tu čest podílet se na obnově kulturní krajiny, znovuzrození valečských sadů.</p>
+		<p>Děkujeme všem, se kterými spolupracujeme, bez kterých by naše práce nikdy nebyla kompletní.</p>
+		<!-- kontakty -->
+		<div class="title" id="kontakty">KONTAKTY</div>
+		<div class="contact-cont">
+			<div class="contact">
+				<p>Sídlo společnosti:</p>
+				<p>StockWerk s. r. o.</p>
+				<p>info@stockwerk.cz</p>
+				<p>+420 725 712 360</p>
+				<p>Vodičkova 677/10</p>
+				<p class="indent">110 00 Praha - Nové Město</p>
+			</div>
+
+			<div class="contact">
+				<p>Kancelář:</p>
+				<p>StockWerk s. r. o.</p>
+				<p>info@stockwerk.cz</p>
+				<p>+420 725 712 360</p>
+				<p>Karmelitská 18</p>
+				<p class="indent">118 00 Praha - Malá Strana</p>
+			</div>
+		</div>
+		<div class="locations">
+			<!-- <figure>
+				<div class="location">
+					<img src="/src/img/Praha.jpg">
+				</div>
+			</figure>
+			<figure>
+				<div class="location">
+					<img src="/src/img/Valec.jpg">
+				</div>
+				<div class="location">
+					<div>Náměstí 33, 364 55 Valeč.</div>
+				</div>
+			</figure>-->
+			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2559.993056045524!2d14.403879273294068!3d50.08641687552347!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94e3ad707395%3A0x1c93b8f0eddd90bc!2sKarmelitsk%C3%A1%20379%2F18%2C%20118%2000%20Mal%C3%A1%20Strana%2C%20Czechia!5e0!3m2!1sen!2sse!4v1573933047214!5m2!1sen!2sse" width="960" height="600" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+			
+			<!--sidlo  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d538.2570191771921!2d14.421282402743852!3d50.0788665310398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94f2587865f1%3A0xb5db6974b1b77404!2zVm9kacSNa292YSA2NzcvMTAsIDExMCAwMCBOb3bDqSBNxJtzdG8!5e0!3m2!1sru!2scz!4v1540413527883" width="960" height="600" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+		</div>
+	</div>
+</section>
+<footer>
+	<div class="wrap">
+		<div class="copyright">&copy; Copyright 2017 - 2019 © StockWerk s.r.o. Všechna práva vyhrazena.</div>
+	</div>
+</footer>

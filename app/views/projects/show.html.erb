@@ -1,0 +1,91 @@
+<div class="wrap">
+  <p id="notice"><%= notice %></p>
+
+  <div class="btnBack">
+    <span><%= link_to 'Edit', edit_project_path(@project) %></span>
+    <span><%= link_to 'Back', projects_path %></span>
+  </div>
+  <table>
+    <tbody>
+      <tr>
+        <td>Název:</td>
+        <td><%= @project.title %></td>
+      </tr>
+      <tr>
+        <td>Místo:</td>
+        <td><%= @project.place %></td>
+      </tr>
+      <tr>
+        <td>Stupeň:</td>
+        <td><%= @project.realization %></td>
+      </tr>
+      <tr>
+        <td>Investor:</td>
+        <td><%= @project.investor %></td>
+      </tr>
+      <tr>
+        <td>Team:</td>
+        <td><%= @project.author %></td>
+      </tr>
+      <tr>
+        <td>Pořadí:</td>
+        <td><%= @project.order %></td>
+      </tr>
+      <tr>
+        <td>Popis:</td>
+        <td><%= @project.description %></td>
+      </tr>
+      <tr>
+        <td>Hlavní obrázek:</td>
+        <td><% if  @project.main_img %>
+          <div class="imgMainBlock">
+            <img src="data:<%= @project.main_img_cont_type %>;base64, <%= @project.main_img_base64 %>" height="100px" />
+            <div class="imgDiscr"><%= @project.main_img %></div>
+            <div class="imgDel">
+              <a href="<%= "/delete_main_image?project_id=" + @project.id.to_s %>"><img src="/src/img/delete.png"/></a>
+              <% else %>
+              <%= form_tag("/add_main_image", method: "post", multipart: true) do %>
+              <%= hidden_field_tag(:project_id, @project.id) %>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+            <%= file_field_tag 'file' %>
+            <span class="btnAdd"><%= submit_tag("Add image") %></span>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= form_tag("/add_image", method: "post", multipart: true) do %>
+            <%= hidden_field_tag(:project_id, @project.id) %>
+            <%= label_tag(:q, "Obrázky:") %>
+        </td>
+        <td>
+            <%= file_field_tag 'file' %>
+            <a name="add_image_block"></a>
+            <span name="" class="btnAdd"><%= submit_tag("Add image") %></span>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <% @project.images.each do |img| %>
+          <div class="imgBlock">
+            <img src="data:<%= img.content_type %>;base64, <%= img.base64 %>" height="100px" />
+            <div class="imgDiscr"><%= img.title %></div>
+            <div class="imgDel">
+              <a href="<%= "/delete_image?id=" + img.id.to_s + "&project_id=" + @project.id.to_s %>"><img src="/src/img/delete.png"/></a>
+            </div>
+          </div>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

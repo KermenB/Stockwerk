@@ -1,0 +1,27 @@
+<div class="content">
+    <section>
+      <div class="wrap">
+        <div style="color: red;"><%= flash[:notice] if flash[:notice]  %></div>
+
+        <%= form_for @site_user, url: sessions_path do |f| %>
+          <table>
+            <tr>
+              <td><%= f.label :username %></td>
+              <td><%= f.text_field :username %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :password %></td>
+              <td><%= f.password_field :password %></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="btnWrap">
+                  <%= f.submit 'Log In' %>
+                </div>
+              </td>
+            <tr>
+        <% end %>
+          </table>
+      </div>
+    </section>
+</div>

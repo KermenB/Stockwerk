@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+<td colspan="3"></td>
+
+<div class="wrap">
+  <div class="title">PROJEKTY</div>
+  <% @projects.each do |project| %>
+    <table class="borderBlock">
+      <tbody>
+        <tr>
+          <td></td>
+          <td class="btnBack">
+            <span><%= link_to 'Show', project %></span>
+            <span><%= link_to 'Edit', edit_project_path(project) %></span>
+            <span><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure, you whant to delete project?' } %></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Název:</td>
+          <td><%= project.title %></td>
+        </tr>
+        <tr>
+          <td>Místo:</td>
+          <td><%= project.place %></td>
+        </tr>
+        <tr>
+          <td>Stupeň:</td>
+          <td><%= project.realization %></td>
+        </tr>
+        <tr>
+          <td>Investor:</td>
+          <td><%= project.investor %></td>
+        </tr>
+        <tr>
+          <td>Team:</td>
+          <td><%= project.author %></td>
+        </tr>
+        <tr>
+          <td>Pořadí:</td>
+          <td><%= project.order %></td>
+        </tr>
+        <tr>
+          <td>Popis:</td>
+          <td><%= project.description %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+<div class="wrap">
+  <div class="btn">
+    <%= link_to 'New Project', new_project_path %>
+  </div>
+</div>

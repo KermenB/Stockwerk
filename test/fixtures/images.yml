@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  base64: MyText
+  order: 1
+
+two:
+  title: MyString
+  base64: MyText
+  order: 1
